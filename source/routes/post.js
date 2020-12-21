@@ -5,7 +5,7 @@ status  = require('http-status')
 const { addProductData } = require('../services/addProduct')
 const multer = require('multer')
 const _ = require('lodash')
-const AllowedType = ['image/png', 'image/jepg', 'image/jpg']
+const AllowedType = ['image/png', 'image/jepg', 'image/jpg', 'image/jpeg']
 
 const Storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -32,8 +32,7 @@ const upload = multer({
 
 router.get('/display', async(req, res) => {
     try {
-        const userCode = req.headers[comCon.FIELD_USER_CODE]
-        const response = await fetchData(userCode)
+        const response = await fetchData()
         res.status(status.OK).send(response)
     } catch (error) {
         if (error.status) res.status(error.status).send({"error_message": error.message})
@@ -43,10 +42,9 @@ router.get('/display', async(req, res) => {
 
 router.post('/add/product', upload.single('productImage'), async(req,res) => {
     try {
-        const userCode = req.headers[comCon.FIELD_USER_CODE]
         const body = req.body
         const productImage = req.file.path
-        const response = await addProductData(userCode, body, productImage)
+        const response = await addProductData(body, productImage)
         res.status(status.OK).send(response)
     } catch (error) {
         if (error.status) res.status(error.status).send({"error_message": error.message})

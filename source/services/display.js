@@ -6,10 +6,10 @@ const { getData } = require('../repository/commonRepo'),
 _ = require('lodash')
 
 
-const fetchData = (userCode) => {
+const fetchData = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            const response = await getData({ user_code: userCode }, {_id:false}, dbCon.COLLECTION_PRODUCT)
+            const response = await getData({}, {_id:false}, dbCon.COLLECTION_PRODUCT)
             if(_.size(response) === 0) return reject(errorGanerator(status.NO_CONTENT, comCon.MSG_NO_CONTENT))
             return resolve(response)
 

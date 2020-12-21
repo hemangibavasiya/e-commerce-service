@@ -13,6 +13,15 @@ const productBodyValidation = (data) => {
     return schema.validate(data)
 }
 
+const addCartBodyValidation = (data) => {
+    const schema = Joi.object({
+        product_id: Joi.number().required(),
+        quantity: Joi.number().required()
+    })
+    return schema.validate(data)
+}
+
 module.exports = {
-    productBodyValidation
+    productBodyValidation,
+    addCartBodyValidation
 }

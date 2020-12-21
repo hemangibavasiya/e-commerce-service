@@ -12,5 +12,8 @@ module.exports = {
     FIELD_CATEGORY: 'category',
     FIELD_USER_CODE: 'user_code',
     FIELD_IMAGE: 'image',
-    FIELD_QUANTITY: 'quantity'
+    FIELD_QUANTITY: 'quantity',
+    COLLECTION_CART: 'cart',
+    FIELD_PRODUCT_ID: 'product_id',
+    FIELD_USER_ID: 'user_id'
 }

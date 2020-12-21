@@ -26,10 +26,6 @@ const productSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    user_code: {
-        type: Number,
-        required: true
-    },
     image: {
         type: String,
         required: true
